@@ -1,0 +1,16 @@
+---
+import Card from "./Card.astro";
+---
+<div class="bg-white flex justify-center mt-32 py-20 border-t">
+  <div class="grid grid-cols-2 w-[1080px] gap-20">
+    <div class="h-full relative"> <!-- Add height and relative positioning -->
+      <div class="sticky top-40 flex flex-col gap-3"> <!-- Add top property -->
+        <p class="text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]">Products And Services</p>
+        <p class="text-[#131820] opacity-[50%]">Explore our diverse product range, carefully selected to meet the highest international standards</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-16">
+      <Card/>
+    </div>
+  </div>
+</div>
