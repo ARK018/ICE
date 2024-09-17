@@ -1,15 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Hero from '../components/Hero';
-import AboutSection from '../components/AboutSection.astro';
-import ProductsSection from '../components/ProductsSection.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero";
+import AboutSection from "../components/AboutSection.astro";
+import ProductsSection from "../components/ProductsSection.astro";
+import CTA from "../components/CTA.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<Hero client:idle/>
-	<AboutSection/>
-	<ProductsSection/>
+  <Hero client:idle />
+  <AboutSection />
+  <ProductsSection />
+  <CTA />
 </Layout>
-
-
