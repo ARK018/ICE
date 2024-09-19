@@ -1,17 +1,18 @@
 ---
-import { Button } from "@radix-ui/themes";
-import img from "../assets/TradeSphere.svg";
+// Add any necessary frontmatter here if required
 ---
 
-<div class="flex justify-center bg-white">
-  <nav class="flex items-center justify-between w-[1080px] h-[72px]">
+<div
+  class="fixed w-full max-w-[1080px] left-1/2 transform -translate-x-1/2 top-5 z-10 flex justify-center pl-8 px-3 rounded-full text-white bg-black/70 backdrop-blur-xl saturate-150"
+>
+  <nav class="flex items-center justify-between w-[1080px] h-[56px]">
     <div class="flex items-center space-x-10">
-      <div class="text-xl font-bold text-[#131820] flex items-center space-x-2">
-        <a href="/">TradeSphere</a>
+      <div class="text-lg font-bold flex items-center space-x-2">
+        <a href="/" class="text-white">TradeSphere</a>
       </div>
-      <a href="/" class="hover:text-gray-600">Home</a>
-      <a href="/about" class="hover:text-gray-600">About</a>
-      <a href="/products" class="hover:text-gray-600">Products</a>
+      <a href="/" class="hover:text-ocean">Home</a>
+      <a href="/about" class="hover:text-ocean">About</a>
+      <a href="/products" class="hover:text-ocean">Products</a>
     </div>
     <a
       href="/contact"
@@ -20,4 +21,25 @@ import img from "../assets/TradeSphere.svg";
       Contact
     </a>
   </nav>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll("nav a");
+      const currentPath = window.location.pathname;
+
+      links.forEach((link) => {
+        if (link.getAttribute("href") === currentPath) {
+          link.classList.add("text-ocean");
+        } else {
+          link.classList.remove("text-ocean");
+        }
+      });
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          links.forEach((l) => l.classList.remove("text-ocean"));
+          link.classList.add("text-ocean");
+        });
+      });
+    });
+  </script>
 </div>

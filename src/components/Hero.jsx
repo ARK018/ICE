@@ -40,7 +40,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[550px] bg-slate-200 mb-40 overflow-hidden">
+    <div className="relative w-full h-[640px] bg-black mb-40 overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -48,11 +48,7 @@ const Hero = () => {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
-            src={slide.image.src}
-            alt={slide.title}
-            className="object-cover w-full h-full"
-          />
+          <img src={slide.image.src} className="object-cover w-full h-full" />
           <div className="absolute inset-0 bg-black bg-opacity-55" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
             <h1 className="text-5xl font-bold mb-4">{slide.title}</h1>

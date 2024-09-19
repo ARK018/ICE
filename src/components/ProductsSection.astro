@@ -9,24 +9,44 @@ import Card from "./Card.astro";
       <div class="sticky top-40 flex flex-col gap-3">
         <!-- Add top property -->
         <p
-          class="text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
+          class="fading text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
         >
           Products And Services
         </p>
-        <p class="text-[#131820] opacity-[50%] w-[420px]">
+        <p class="fading text-[#131820] opacity-[50%] w-[420px]">
           Explore our diverse product range, carefully selected to meet the
           highest international standards
         </p>
         <a
           href="/products"
-          class="w-fit mt-5 px-7 py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer"
+          class="fading w-fit mt-5 px-7 py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer"
         >
           Learn More
         </a>
       </div>
     </div>
-    <div class="flex flex-col gap-16">
+    <div class="fading flex flex-col gap-16">
       <Card />
     </div>
   </div>
 </div>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  const elements = document.querySelectorAll(".fading");
+  gsap.from(elements, {
+    opacity: 0,
+    y: 20,
+    stagger: {
+      each: 0.2,
+    },
+    scrollTrigger: {
+      trigger: elements,
+      toggleActions: "play pause resume reset",
+      start: "top 80%",
+      markers: true,
+    },
+  });
+</script>

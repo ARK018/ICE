@@ -6,13 +6,14 @@ export default {
       colors: {
         sky: "#1D9BF0",
         ocean: "#3b8fc8",
+        grey: "#fafafa",
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui"],
       },
       boxShadow: {
         "card-shadow":
-          "rgba(23, 22, 31, 0.12) 0px 30px 56px -18px, rgba(0, 0, 0, 0.05) 0px 18px 32px -24px",
+          "rgba(23, 22, 31, 0.06) 0px 30px 56px -18px, rgba(0, 0, 0, 0.005) 0px 18px 32px -24px",
       },
     },
   },

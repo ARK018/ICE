@@ -1,22 +1,54 @@
 ---
-
+import CTA_globe from "../assets/CTA-globe.jpg";
+import { Image } from "astro:assets";
 ---
 
 <!-- Get In Touch -->
 <div
-  class="flex flex-col items-center w-full text-center bg-[#F7F7F7] gap-4 p-20"
+  class="relative flex flex-col items-center w-full text-center bg-[#0a2540] gap-4 px-20 py-32"
 >
-  <h1 class="text-3xl font-bold text-gray-800">
-    Join us in creating a global impact.
-  </h1>
-  <p class="text-lg text-gray-600">
-    Our dedicated team works tirelessly to ensure a seamless experience, making
-    us a preferred partner in international trade.
-  </p>
-  <a
-    href="/contact"
-    class="w-fit px-7 py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer"
-  >
-    Get In Touch
-  </a>
+  <Image
+    class="absolute inset-0 w-full h-full object-cover object-bottom"
+    src={CTA_globe}
+    alt="cta-globe"
+  />
+
+  <div class="absolute inset-0 w-full h-full bg-black/60"></div>
+
+  <div class="fades z-10 flex flex-col items-center gap-4">
+    <h1 class="text-3xl font-bold text-white">
+      Join us in creating a global impact.
+    </h1>
+    <p class="fades text-lg text-white/60 max-w-[64ch]">
+      Our dedicated team works tirelessly to ensure a seamless experience,
+      making us a preferred partner in international trade.
+    </p>
+    <a
+      href="/contact"
+      class="fades w-fit mt-2 px-7 py-2 rounded-full bg-sky hover:bg-ocean text-white cursor-pointer"
+    >
+      Get In Touch
+    </a>
+  </div>
 </div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  const elements = document.querySelectorAll(".fades");
+  gsap.from(elements, {
+    opacity: 0,
+    y: 20,
+    stagger: {
+      each: 0.2,
+    },
+    scrollTrigger: {
+      trigger: elements,
+      toggleActions: "play pause resume reset",
+      start: "top 80%",
+      markers: true,
+    },
+  });
+</script>

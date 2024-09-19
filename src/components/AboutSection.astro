@@ -5,26 +5,26 @@
 <div class="flex justify-center mt-32">
   <div class="flex flex-col justify-center items-center w-[1080px] gap-3">
     <h1
-      class="text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
+      class="fade text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
     >
       About Intercontinental Exim
     </h1>
-    <p class="text-[#131820] opacity-[50%] text-center w-[750px]">
+    <p class="fade text-[#131820] opacity-[50%] text-center w-[750px]">
       At Intercontinental Exim, we believe in bridging the gap between
       continents through world-class trade services. Our mission is to provide
       premium products that uphold the highest standards of quality,
       reliability, and sustainability.
     </p>
     <a
-      href="#"
-      class="mt-5 px-7 py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer"
+      href="/about"
+      class="fade mt-5 px-7 py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer"
     >
       About
     </a>
     <div class="pt-24">
       <div class="w-full mx-auto grid grid-cols-5 gap-8">
         <div
-          class="w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
+          class="slide w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
         >
           <div class="pb-24">
             <h3 class="text-sky text-xl font-bold mb-2 text-left">01</h3>
@@ -39,7 +39,7 @@
           </p>
         </div>
         <div
-          class="w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
+          class="slide w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
         >
           <div class="pb-24">
             <h3 class="text-sky text-xl font-bold mb-2 text-left">02</h3>
@@ -54,7 +54,7 @@
           </p>
         </div>
         <div
-          class="w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
+          class="slide w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
         >
           <div class="pb-24">
             <h3 class="text-sky text-xl font-bold mb-2 text-left">03</h3>
@@ -69,7 +69,7 @@
           </p>
         </div>
         <div
-          class="w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
+          class="slide w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
         >
           <div class="pb-24">
             <h3 class="text-sky text-xl font-bold mb-2 text-left">04</h3>
@@ -84,7 +84,7 @@
           </p>
         </div>
         <div
-          class="w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
+          class="slide w-full flex flex-col justify-between text-center border-l border-gray-300 pl-4"
         >
           <div class="pb-24">
             <h3 class="text-sky text-xl font-bold mb-2 text-left">05</h3>
@@ -102,3 +102,39 @@
     </div>
   </div>
 </div>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  const elements = document.querySelectorAll(".fade");
+  gsap.from(elements, {
+    opacity: 0,
+    y: 20,
+    stagger: {
+      each: 0.2,
+    },
+    scrollTrigger: {
+      trigger: elements,
+      toggleActions: "play pause resume reset",
+      start: "top 80%",
+      markers: true,
+    },
+  });
+
+  const card = document.querySelectorAll(".slide");
+  gsap.from(card, {
+    opacity: 0,
+    x: -20,
+    stagger: {
+      each: 0.2,
+    },
+    scrollTrigger: {
+      trigger: card,
+      toggleActions: "play none none reset",
+      start: "top 80%",
+      once: false,
+      markers: true,
+    },
+  });
+</script>
