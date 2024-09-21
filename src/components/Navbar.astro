@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+
 // Add any necessary frontmatter here if required
 ---
 
@@ -6,20 +9,26 @@
   class="fixed w-full max-w-[1080px] left-1/2 transform -translate-x-1/2 top-5 z-10 flex justify-center pl-8 px-3 rounded-full text-white bg-black/70 backdrop-blur-xl saturate-150"
 >
   <nav class="flex items-center justify-between w-[1080px] h-[56px]">
+    <div class="text-lg font-bold flex items-center space-x-2">
+      <a href="/" class="text-white">
+        <div class="flex justify-center items-center gap-1">
+          <Image src={logo} alt="" width={42} />
+          IntercontinentalExim
+        </div>
+      </a>
+    </div>
+
     <div class="flex items-center space-x-10">
-      <div class="text-lg font-bold flex items-center space-x-2">
-        <a href="/" class="text-white">TradeSphere</a>
-      </div>
       <a href="/" class="hover:text-ocean">Home</a>
       <a href="/about" class="hover:text-ocean">About</a>
       <a href="/products" class="hover:text-ocean">Products</a>
+      <a
+        href="/contact"
+        class="bg-sky text-white px-6 py-2 rounded-full hover:bg-ocean"
+      >
+        Contact
+      </a>
     </div>
-    <a
-      href="/contact"
-      class="bg-sky text-white px-6 py-2 rounded-full hover:bg-ocean"
-    >
-      Contact
-    </a>
   </nav>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
