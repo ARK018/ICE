@@ -7,19 +7,21 @@ import img3 from "../assets/Img3.jpg";
 const slides = [
   {
     image: global,
-    title: "Global Quality Food Exporter From India",
+    title: "Global Quality Food Provider",
     description:
-      "We export food including raw vegetables, fruits, spices & many more",
+      "We export food including raw vegetables, fruits, spices, and many more high-quality products all across the globe.",
   },
   {
     image: img2,
     title: "Fresh Produce Straight from the Farm",
-    description: "High-quality fruits and vegetables for global markets",
+    description:
+      "High-quality fruits and vegetables for global markets, delivered fresh and ready to savor daily with the utmost care and dedication.",
   },
   {
     image: img3,
     title: "Spices that Elevate Every Dish",
-    description: "Authentic Indian spices exported worldwide",
+    description:
+      "Authentic Indian spices exported worldwide to enhance the rich flavor of your favorite dishes beautifully.",
   },
 ];
 
@@ -35,7 +37,7 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -52,7 +54,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-black bg-opacity-55" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
             <h1 className="text-5xl font-bold mb-4">{slide.title}</h1>
-            <p className="text-lg max-w-2xl">{slide.description}</p>
+            <p className="text-lg max-w-3xl">{slide.description}</p>
           </div>
         </div>
       ))}

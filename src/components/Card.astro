@@ -1,70 +1,73 @@
 ---
 // Card.astro
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import img3 from "../assets/Img3.jpg";
-import IT from "../assets/IT.jpg"
-import Interior from "../assets/Interior.jpg"
-import Fruits from "../assets/Fruits.jpg"
-import Nuts from "../assets/Nuts.jpg"
-import Snacks from "../assets/Snacks.webp"
+import IT from "../assets/IT.jpg";
+import Interior from "../assets/Interior.jpg";
+import Fruits from "../assets/Fruits.jpg";
+import Nuts from "../assets/Nuts.jpg";
+import Snacks from "../assets/Snacks.webp";
+
+const cards = [
+  {
+    src: IT,
+    alt: "IT Image",
+    title: "IT Services",
+    description:
+      "Innovative technology solutions, including software development, IT consulting, and system integration.",
+  },
+  {
+    src: Interior,
+    alt: "Interior Image",
+    title: "Interior Designing",
+    description:
+      "Expert design and planning services to transform spaces into functional, aesthetic environments.",
+  },
+  {
+    src: Fruits,
+    alt: "Fruits Image",
+    title: "Fruits And Vegetables",
+    description:
+      "Fresh, seasonal produce sourced to ensure quality and flavor.",
+  },
+  {
+    src: img3,
+    alt: "Spices Image",
+    title: "Spices",
+    description:
+      "High-quality spices and blends, available in whole, powdered, and mixed forms for all culinary needs.",
+  },
+  {
+    src: Snacks,
+    alt: "Dry Snacks",
+    title: "Dry Snacks",
+    description:
+      "A variety of tasty, ready-to-eat snacks including chips, nuts, and trail mixes.",
+  },
+  {
+    src: Nuts,
+    alt: "Dry Fruits",
+    title: "Dry Fruits",
+    description:
+      "Premium dried fruits, including raisins, apricots, and dates, ideal for snacking or cooking.",
+  },
+];
 ---
 
-<div class="w-full bg-white rounded-[18px] shadow-card-shadow overflow-hidden p-3 border">
-  <div class="bg-gray-100 p-6 relative h-60">
-	<Image src={IT} alt="IT Image" class="object-cover absolute top-0 left-0 w-full h-full rounded-lg">
-  </div>
-  <div class="p-6">
-    <h2 class="text-xl font-semibold mb-2">IT Services</h2>
-    <p class="text-gray-600">Innovative technology solutions, including software development, IT consulting, and system integration.</p>
-  </div>
-</div>
-
-<div class="w-full bg-white rounded-[18px] shadow-card-shadow overflow-hidden p-3 border">
-	<div class="bg-gray-100 p-6 relative h-60">
-	  <Image src={Interior} alt="Interior Image" class="object-cover absolute top-0 left-0 w-full h-full rounded-lg">
-	</div>
-	<div class="p-6">
-	  <h2 class="text-xl font-semibold mb-2">Interior Designing</h2>
-	  <p class="text-gray-600">Expert design and planning services to transform spaces into functional, aesthetic environments.</p>
-	</div>
-  </div>
-
-  <div class="w-full bg-white rounded-[18px] shadow-card-shadow overflow-hidden p-3 border">
-	<div class="bg-gray-100 p-6 relative h-60">
-	  <Image src={Fruits} alt="Fruits Image" class="object-cover absolute top-0 left-0 w-full h-full rounded-lg">
-	</div>
-	<div class="p-6">
-	  <h2 class="text-xl font-semibold mb-2">Fruits And Vegetables</h2>
-	  <p class="text-gray-600">Fresh, seasonal produce sourced to ensure quality and flavor.</p>
-	</div>
-  </div>
-
-  <div class="w-full bg-white rounded-[18px] shadow-card-shadow overflow-hidden p-3 border">
-	<div class="bg-gray-100 p-6 relative h-60">
-	  <Image src={img3} alt="Spices Image" class="object-cover absolute top-0 left-0 w-full h-full rounded-lg">
-	</div>
-	<div class="p-6">
-	  <h2 class="text-xl font-semibold mb-2">Spices (Whole, Powder, Masala)</h2>
-	  <p class="text-gray-600">High-quality spices and blends, available in whole, powdered, and mixed forms for all culinary needs.</p>
-	</div>
-  </div>
-
-  <div class="w-full bg-white rounded-[18px] shadow-card-shadow overflow-hidden p-3 border">
-	<div class="bg-gray-100 p-6 relative h-60">
-	  <Image src={Snacks} alt="Dry Snacks" class="object-cover absolute top-0 left-0 w-full h-full rounded-lg">
-	</div>
-	<div class="p-6">
-	  <h2 class="text-xl font-semibold mb-2">Dry Snacks</h2>
-	  <p class="text-gray-600">A variety of tasty, ready-to-eat snacks including chips, nuts, and trail mixes.</p>
-	</div>
-  </div>
-
-  <div class="w-full bg-white rounded-[18px] shadow-card-shadow overflow-hidden p-3 border">
-	<div class="bg-gray-100 p-6 relative h-60">
-	  <Image src={Nuts} alt="Dry Fruits" class="object-cover absolute top-0 left-0 w-full h-full rounded-lg">
-	</div>
-	<div class="p-6">
-	  <h2 class="text-xl font-semibold mb-2">Dry Fruits</h2>
-	  <p class="text-gray-600">Premium dried fruits, including raisins, apricots, and dates, ideal for snacking or cooking.</p>
-	</div>
-  </div>
+{
+  cards.map((card) => (
+    <div class="w-full bg-white rounded-[18px] shadow-card-shadow overflow-hidden p-3 border">
+      <div class="bg-gray-100 p-6 relative h-60">
+        <Image
+          src={card.src}
+          alt={card.alt}
+          class="object-cover absolute top-0 left-0 w-full h-full rounded-lg"
+        />
+      </div>
+      <div class="p-6">
+        <h2 class="text-xl font-semibold mb-2">{card.title}</h2>
+        <p class="text-gray-600">{card.description}</p>
+      </div>
+    </div>
+  ))
+}

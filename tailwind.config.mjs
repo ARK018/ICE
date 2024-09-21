@@ -3,6 +3,9 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      animation: {
+        "spin-slow": "spin 6s linear infinite",
+      },
       colors: {
         sky: "#1D9BF0",
         ocean: "#3b8fc8",

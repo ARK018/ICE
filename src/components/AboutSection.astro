@@ -1,26 +1,37 @@
 ---
-
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import nouncircleblack from "../../public/nouncircleblack.svg";
 ---
 
 <div class="flex justify-center mt-32">
   <div class="flex flex-col justify-center items-center w-[1080px] gap-3">
-    <div class="flex flex-col items-center">
-      <h1
-        class="fade text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
-      >
-        About Intercontinental Exim
-      </h1>
-      <p class="fade text-ocean/50">A venture of Elegance Express</p>
+    <div class="fade">
+      <Image
+        src={nouncircleblack}
+        ,
+        alt="Noun Circle Black Icon"
+        ,
+        width={48}
+        ,
+        class="animate-spin-slow"
+      />
     </div>
-    <p class="fade text-[#131820] opacity-[50%] text-center w-[750px]">
-      At Intercontinental Exim, we believe in bridging the gap between
-      continents through world-class trade services. Our mission is to provide
-      premium products that uphold the highest standards of quality,
-      reliability, and sustainability.
+
+    <h1
+      class="fade text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
+    >
+      About TradeSphere
+    </h1>
+
+    <p class="fade text-[#131820] opacity-[50%] text-center w-[780px]">
+      At TradeSphere, we bridge the gap between continents with world class
+      trade services. Our mission is to deliver premium products that meet the
+      highest standards of quality, reliability, and sustainability
     </p>
     <a
       href="/about"
-      class="fade mt-5 px-7 py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer"
+      class="fade mt-5 px-7 py-2 rounded-full border-2 border-black text-black cursor-pointer hover:bg-black hover:text-white"
     >
       About
     </a>

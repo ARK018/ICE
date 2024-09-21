@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../../public/logo.png";
+import { Icon } from "astro-icon/components";
 
 // Add any necessary frontmatter here if required
 ---
@@ -10,7 +10,12 @@ import logo from "../../public/logo.png";
 >
   <nav class="flex items-center justify-between w-[1080px] h-[56px]">
     <div class="text-lg font-bold flex items-center space-x-2">
-      <a href="/" class="text-white"> IntercontinentalExim </a>
+      <a href="/" class="text-white">
+        <div class="flex justify-center items-center gap-2">
+          <Icon name="nouncircle" size={32} class="animate-spin-slow" />
+          TradeSphere
+        </div>
+      </a>
     </div>
 
     <div class="flex items-center space-x-10">
