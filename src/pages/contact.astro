@@ -101,15 +101,15 @@ import { Image } from "astro:assets";
 
   import emailjs from "@emailjs/browser";
   emailjs.init({
-    publicKey: "n_k1SupWqv5mS3inO",
+    publicKey: "UiWw3BRBD81GkAxfi",
   });
   const form = document.getElementById("contactForm") as HTMLFormElement;
   form.addEventListener("submit", async (e: Event) => {
     e.preventDefault();
     try {
       const result = await emailjs.sendForm(
-        "service_yhvgdce",
-        "template_txz6rku",
+        "service_7j1mhvl",
+        "template_7r1bc0n",
         form
       );
       console.log("Email sent successfully:", result.text);
