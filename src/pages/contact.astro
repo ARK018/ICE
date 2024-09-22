@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import contact from "../assets/Contact.jpg";
-import { Image } from "astro:assets";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -71,19 +69,27 @@ import { Image } from "astro:assets";
         <!-- Submit Button -->
         <button
           type="submit"
-          class="w-full mt-[26px] px-7 py-2 rounded-full text-white cursor-pointer bg-sky hover:bg-ocean"
+          id="submitButton"
+          class="w-full mt-[26px] px-7 py-3 rounded-full text-white cursor-pointer bg-sky hover:bg-ocean relative h-12"
         >
-          Submit
+          <span id="submitText">Submit</span>
+          <div
+            id="loader"
+            class="hidden absolute inset-0 items-center justify-center"
+          >
+            <div
+              class="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"
+            >
+            </div>
+          </div>
         </button>
       </form>
     </div>
   </div>
 </Layout>
-
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-
   gsap.registerPlugin(ScrollTrigger);
   const elements = document.querySelectorAll(".contact_fades");
   gsap.from(elements, {
@@ -98,14 +104,26 @@ import { Image } from "astro:assets";
       start: "top 80%",
     },
   });
-
   import emailjs from "@emailjs/browser";
   emailjs.init({
     publicKey: "UiWw3BRBD81GkAxfi",
   });
   const form = document.getElementById("contactForm") as HTMLFormElement;
+  const submitButton = document.getElementById(
+    "submitButton"
+  ) as HTMLButtonElement;
+  const submitText = document.getElementById("submitText") as HTMLSpanElement;
+  const loader = document.getElementById("loader") as HTMLDivElement;
+
   form.addEventListener("submit", async (e: Event) => {
     e.preventDefault();
+
+    // Show loader and hide text
+    submitText.classList.add("hidden");
+    loader.classList.remove("hidden");
+    loader.classList.add("flex");
+    submitButton.disabled = true;
+
     try {
       const result = await emailjs.sendForm(
         "service_7j1mhvl",
@@ -118,6 +136,12 @@ import { Image } from "astro:assets";
     } catch (error) {
       console.error("Error sending email:", error);
       alert("There was an error submitting the form. Please try again.");
+
+      // Hide loader and show text
+      submitText.classList.remove("hidden");
+      loader.classList.add("hidden");
+      loader.classList.remove("flex");
+      submitButton.disabled = false;
     }
   });
 </script>
