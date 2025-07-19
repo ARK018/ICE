@@ -10,18 +10,30 @@ import { Image } from "astro:assets";
 <Layout title="Welcome to Astro.">
   <div class="bg-white flex flex-col items-center justify-center">
     <!-- Section Title -->
-    <div class="about_fades w-full text-center bg-sky/5 pt-32 p-20 mb-20">
-      <h1 class="text-4xl font-bold text-gray-800">About Us</h1>
-      <p class="mt-4 text-lg text-gray-600">
+    <div
+      class="about_fades w-full text-center bg-sky/5 pt-36 md:pt-24 lg:pt-32 px-4 sm:px-8 md:px-12 lg:px-20 py-12 md:py-16 lg:py-20 mb-12 md:mb-16 lg:mb-20"
+    >
+      <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">
+        About Us
+      </h1>
+      <p class="mt-3 md:mt-4 text-base md:text-lg text-gray-600">
         Bridging continents with world-class trade services.
       </p>
     </div>
-    <div class="flex flex-col justify-center items-center w-[1080px] gap-3">
-      <div class="about_fades grid grid-cols-2 items-center mb-20 gap-4">
+    <div
+      class="flex flex-col justify-center items-center w-full max-w-[1080px] gap-3 px-4 sm:px-6 lg:px-8"
+    >
+      <div
+        class="about_fades grid grid-cols-1 lg:grid-cols-2 items-center mb-12 md:mb-16 lg:mb-20 gap-6 md:gap-8"
+      >
         <!-- Mission Statement -->
-        <div class="mb-12">
-          <h2 class="text-2xl font-semibold text-gray-700 mb-4">Our Mission</h2>
-          <p class="text-gray-600">
+        <div class="mb-6 lg:mb-0">
+          <h2
+            class="text-xl md:text-2xl font-semibold text-gray-700 mb-3 md:mb-4"
+          >
+            Our Mission
+          </h2>
+          <p class="text-sm md:text-base text-gray-600">
             At <strong>IntercontinentalExim</strong>, we believe in bridging the
             gap between continents through world-class trade services. Our
             mission is to provide premium products that uphold the highest
@@ -29,31 +41,39 @@ import { Image } from "astro:assets";
           </p>
         </div>
         <div
-          class="relative w-full h-full aspect-w-3 aspect-h-5 overflow-hidden"
+          class="relative w-full aspect-[4/3] md:aspect-[3/2] lg:aspect-[16/9] overflow-hidden rounded-lg"
         >
-          <Image src={dock} alt="Ship Dock" class="object-cover" />
+          <Image
+            src={dock}
+            alt="Ship Dock"
+            class="object-cover w-full h-full"
+          />
         </div>
       </div>
 
       <!-- Specialization Section -->
       <div
-        class="w-full h-full flex flex-col justify-center items-center gap-5 mb-20"
+        class="w-full h-full flex flex-col justify-center gap-4 md:gap-5 mb-12 md:mb-16 lg:mb-20"
       >
-        <h2 class="text-2xl font-semibold text-gray-700 mb-4">
+        <h2
+          class="text-xl md:text-2xl font-semibold text-gray-700 mb-3 md:mb-4"
+        >
           What We Specialize In
         </h2>
-        <div class="w-full flex gap-5">
+        <div
+          class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+        >
           <div
-            class="about_slide w-full border px-12 py-10 flex flex-col justify-start rounded-[18px]"
+            class="about_slide w-full border px-6 md:px-8 lg:px-12 py-8 md:py-10 flex flex-col justify-start rounded-[18px]"
           >
-            <div class="text-ocean mb-12">
+            <div class="text-ocean mb-8 md:mb-12">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="size-10"
+                class="size-8 md:size-10"
               >
                 <path
                   stroke-linecap="round"
@@ -63,24 +83,24 @@ import { Image } from "astro:assets";
               </svg>
             </div>
 
-            <div class="">
-              <h4 class="text-lg">IT Services</h4>
-              <p class="text-gray-600">
+            <div>
+              <h4 class="text-base md:text-lg font-medium">IT Services</h4>
+              <p class="text-sm md:text-base text-gray-600 mt-1">
                 Tailored services for global enterprises.
               </p>
             </div>
           </div>
           <div
-            class="about_slide w-full border px-12 py-10 flex flex-col justify-start rounded-[18px]"
+            class="about_slide w-full border px-6 md:px-8 lg:px-12 py-8 md:py-10 flex flex-col justify-start rounded-[18px]"
           >
-            <div class="text-ocean mb-12">
+            <div class="text-ocean mb-8 md:mb-12">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="size-10"
+                class="size-8 md:size-10"
               >
                 <path
                   stroke-linecap="round"
@@ -89,22 +109,26 @@ import { Image } from "astro:assets";
                 ></path>
               </svg>
             </div>
-            <div class="">
-              <h4 class="text-lg">Interior Designing</h4>
-              <p class="text-gray-600">Blending innovation and style.</p>
+            <div>
+              <h4 class="text-base md:text-lg font-medium">
+                Interior Designing
+              </h4>
+              <p class="text-sm md:text-base text-gray-600 mt-1">
+                Blending innovation and style.
+              </p>
             </div>
           </div>
           <div
-            class="about_slide w-full border px-12 py-10 flex flex-col justify-start rounded-[18px]"
+            class="about_slide w-full border px-6 md:px-8 lg:px-12 py-8 md:py-10 flex flex-col justify-start rounded-[18px]"
           >
-            <div class="text-ocean mb-12">
+            <div class="text-ocean mb-8 md:mb-12">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="size-10"
+                class="size-8 md:size-10"
               >
                 <path
                   stroke-linecap="round"
@@ -113,9 +137,11 @@ import { Image } from "astro:assets";
                 ></path>
               </svg>
             </div>
-            <div class="">
-              <h4 class="text-lg">High-Quality Products</h4>
-              <p class="text-gray-600">
+            <div>
+              <h4 class="text-base md:text-lg font-medium">
+                High-Quality Products
+              </h4>
+              <p class="text-sm md:text-base text-gray-600 mt-1">
                 Supplying products from trusted partners
               </p>
             </div>

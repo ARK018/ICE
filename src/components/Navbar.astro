@@ -1,24 +1,34 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../../public/logo.png";
-
-// Add any necessary frontmatter here if required
 ---
 
 <div
-  class="fixed w-full max-w-[1080px] left-1/2 transform -translate-x-1/2 top-5 z-10 flex justify-center pl-8 px-3 rounded-full text-white bg-black/70 backdrop-blur-xl saturate-150"
+  class="fixed w-full max-w-[1080px] left-1/2 transform -translate-x-1/2 top-5 z-50 flex justify-center pl-8 px-6 rounded-full text-white bg-black/70 backdrop-blur-xl saturate-150"
 >
   <nav class="flex items-center justify-between w-[1080px] h-[56px]">
     <div class="text-lg font-bold flex items-center space-x-2">
       <a href="/" class="text-white">
         <div class="flex justify-center items-center gap-1">
-          <Image src={logo} alt="" width={42} />
-          IntercontinentalExim
+          <Image src={logo} alt="Logo" width={42} />
+          <span class="hidden md:inline">IntercontinentalExim</span>
+          <span class="md:hidden">ICE</span>
         </div>
       </a>
     </div>
 
-    <div class="flex items-center space-x-10">
+    <!-- Hamburger Menu Button -->
+    <button
+      id="hamburger-menu"
+      class="md:hidden w-6 h-6 flex flex-col justify-center items-center gap-1.5 cursor-pointer z-50"
+      aria-label="Menu"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-10">
       <a href="/" class="hover:text-ocean">Home</a>
       <a href="/about" class="hover:text-ocean">About</a>
       <a href="/products" class="hover:text-ocean">Products</a>
@@ -29,26 +39,125 @@ import logo from "../../public/logo.png";
         Contact
       </a>
     </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 w-full h-0 bg-black -z-10 overflow-hidden transition-all duration-500 flex flex-col items-center justify-center gap-8"
+    >
+      <a href="/" class="mobile-link">Home</a>
+      <a href="/about" class="mobile-link">About</a>
+      <a href="/products" class="mobile-link">Products</a>
+      <a
+        href="/contact"
+        class="mobile-link bg-sky text-white px-8 py-2 rounded-full hover:bg-ocean"
+      >
+        Contact
+      </a>
+    </div>
   </nav>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll("nav a");
-      const currentPath = window.location.pathname;
-
-      links.forEach((link) => {
-        if (link.getAttribute("href") === currentPath) {
-          link.classList.add("text-ocean");
-        } else {
-          link.classList.remove("text-ocean");
-        }
-      });
-
-      links.forEach((link) => {
-        link.addEventListener("click", () => {
-          links.forEach((l) => l.classList.remove("text-ocean"));
-          link.classList.add("text-ocean");
-        });
-      });
-    });
-  </script>
 </div>
+
+<style>
+  .hamburger-line {
+    @apply w-6 h-0.5 bg-white transition-all duration-300 ease-in-out;
+    position: absolute;
+  }
+
+  .hamburger-line:first-child {
+    transform: translateY(-4px);
+  }
+
+  .hamburger-line:last-child {
+    transform: translateY(4px);
+  }
+
+  /* Hamburger Animation */
+  .hamburger-menu-active .hamburger-line:first-child {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  .hamburger-menu-active .hamburger-line:last-child {
+    transform: translateY(0) rotate(-45deg);
+  }
+
+  /* Mobile Menu Links */
+  .mobile-link {
+    @apply text-2xl text-white opacity-0 transform translate-y-8 transition-all duration-300 ease-in-out;
+  }
+
+  /* Mobile Menu Open State */
+  .mobile-menu-active {
+    @apply h-screen;
+  }
+
+  .mobile-menu-active .mobile-link {
+    @apply opacity-100 translate-y-0;
+  }
+</style>
+
+<script>
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+  let isMenuOpen = false;
+
+  const toggleMenu = (shouldOpen?: boolean) => {
+    isMenuOpen = shouldOpen !== undefined ? shouldOpen : !isMenuOpen;
+    hamburgerMenu?.classList.toggle("hamburger-menu-active", isMenuOpen);
+    mobileMenu?.classList.toggle("mobile-menu-active", isMenuOpen);
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+
+    // Stagger animation for links
+    mobileLinks.forEach((link, index) => {
+      if (isMenuOpen) {
+        setTimeout(() => {
+          link.classList.add("opacity-100", "translate-y-0");
+          link.classList.remove("opacity-0", "translate-y-8");
+        }, index * 100);
+      } else {
+        link.classList.remove("opacity-100", "translate-y-0");
+        link.classList.add("opacity-0", "translate-y-8");
+      }
+    });
+  };
+
+  hamburgerMenu?.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent click from bubbling to document
+    toggleMenu();
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const isClickInsideMenu = mobileMenu?.contains(target);
+    const isClickOnHamburger = hamburgerMenu?.contains(target);
+
+    if (isMenuOpen && !isClickInsideMenu && !isClickOnHamburger) {
+      toggleMenu(false);
+    }
+  });
+
+  // Close menu when clicking a link
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (isMenuOpen) toggleMenu(false);
+    });
+  });
+
+  // Handle window resize
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768 && isMenuOpen) {
+      toggleMenu(false);
+    }
+  });
+
+  // Handle active link
+  const currentPath = window.location.pathname;
+  const links = document.querySelectorAll("nav a");
+  links.forEach((link) => {
+    if (link.getAttribute("href") === currentPath) {
+      link.classList.add("text-ocean");
+    }
+  });
+</script>

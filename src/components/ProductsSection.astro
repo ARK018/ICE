@@ -2,50 +2,76 @@
 import Card from "./Card.astro";
 ---
 
-<div class="bg-white flex justify-center mt-32 py-20 border-t">
-  <div class="grid grid-cols-2 w-[1080px] gap-20">
+<div
+  class="bg-white flex justify-center mt-16 md:mt-24 lg:mt-32 py-12 md:py-16 lg:py-20 border-t px-4 md:px-6 lg:px-8"
+>
+  <div
+    class="grid grid-cols-1 lg:grid-cols-2 max-w-[1080px] w-full gap-10 md:gap-16 lg:gap-20"
+  >
     <div class="h-full relative">
-      <!-- Add height and relative positioning -->
-      <div class="sticky top-40 flex flex-col gap-3">
-        <!-- Add top property -->
+      <div class="lg:sticky lg:top-40 flex flex-col gap-3">
         <p
-          class="fading text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
+          class="text-section text-3xl md:text-4xl text-[#131820] font-semibold leading-[110%] tracking-[-0.02em]"
         >
           Products And Services
         </p>
-        <p class="fading text-[#131820] opacity-[50%] w-[420px]">
+        <p
+          class="text-section text-sm md:text-base text-[#131820] opacity-[50%] max-w-[420px]"
+        >
           Explore our diverse product range, carefully selected to meet the
           highest international standards
         </p>
         <a
           href="/products"
-          class="fading w-fit mt-5 px-7 py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer"
+          class="text-section w-fit mt-3 md:mt-5 px-5 md:px-7 py-1.5 md:py-2 rounded-full border-2 border-[#131820] text-black cursor-pointer text-sm md:text-base hover:bg-[#131820] hover:text-white transition-colors"
         >
           Learn More
         </a>
       </div>
     </div>
-    <div class="fading flex flex-col gap-16">
+    <div class="cards-section flex flex-col gap-8 md:gap-12 lg:gap-16">
       <Card />
     </div>
   </div>
 </div>
+
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
-  const elements = document.querySelectorAll(".fading");
-  gsap.from(elements, {
+
+  // Animate text section
+  const textElements = document.querySelectorAll(".text-section");
+  gsap.from(textElements, {
     opacity: 0,
     y: 20,
-    stagger: {
-      each: 0.2,
-    },
+    duration: 0.8,
+    stagger: 0.2,
     scrollTrigger: {
-      trigger: elements,
-      toggleActions: "play pause resume reset",
+      trigger: textElements,
       start: "top 80%",
+      end: "bottom 20%",
+      toggleActions: "play none none reverse",
     },
   });
+
+  // Animate cards with a more controlled approach
+  const cardsContainer = document.querySelector(".cards-container");
+  if (cardsContainer) {
+    const cards = cardsContainer.children;
+    gsap.from(cards, {
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: cardsContainer,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  }
 </script>
